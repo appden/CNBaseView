@@ -67,7 +67,18 @@ static NSFont *defaultTextFont;
 
 	defaultTextColor = [NSColor lightGrayColor];
 	defaultShadowColor = [NSColor whiteColor];
-	defaultTextFont = [NSFont fontWithName:@"HelveticaNeue-Medium" size:18.0f];
+    
+    // avoid a crash if the user has altered their installed fonts
+    for (NSString *fontName in @[@"HelveticaNeue-Medium", @"Helvetica"]) {
+        defaultTextFont = [NSFont fontWithName:fontName size:18.0f];
+        if (defaultTextFont) {
+            break;
+        }
+    }
+    
+    if (!defaultTextFont) {
+        defaultTextFont = [NSFont systemFontOfSize:18.0f];
+    }
 }
 
 - (id)init {
