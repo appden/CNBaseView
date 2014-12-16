@@ -132,7 +132,7 @@ typedef enum {
 
  @param preventDrawingWithSubviews  `YES` (default value) will stop drawing the icon and text if there are subviews available. `NO` will always draw the icon and text.
  */
-@property (assign) BOOL preventDrawingWithSubviews;
+@property (assign, nonatomic) BOOL preventDrawingWithSubviews;
 
 /**
  Property to set the backgroundcolor of the view.
